@@ -14,7 +14,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         '''Sets up the UI'''
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1600, 900)
+        MainWindow.resize(1400, 900)
         font = QtGui.QFont()
         font.setFamily("Courier New")
         font.setBold(False)
@@ -23,12 +23,12 @@ class Ui_MainWindow(object):
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.table = QtWidgets.QTableWidget(self.centralwidget)
-        self.table.setGeometry(QtCore.QRect(10, 40, 1321, 791))
+        self.table.setGeometry(QtCore.QRect(10, 40, 1021, 791))
         self.table.setObjectName("table")
         self.table.setColumnCount(0)
         self.table.setRowCount(0)
         self.view = QtWidgets.QListWidget(self.centralwidget)
-        self.view.setGeometry(QtCore.QRect(1350, 60, 151, 221))
+        self.view.setGeometry(QtCore.QRect(1050, 60, 151, 221))
         self.view.setObjectName("view")
         self.open_db_btn = QtWidgets.QPushButton(self.centralwidget)
         self.open_db_btn.setGeometry(QtCore.QRect(10, 10, 81, 23))
@@ -40,18 +40,18 @@ class Ui_MainWindow(object):
         #search label and btn
         #searchLab
         self.searchLab = QtWidgets.QLineEdit(self.centralwidget)
-        self.searchLab.setGeometry(QtCore.QRect(1030, 10, 200, 23))
+        self.searchLab.setGeometry(QtCore.QRect(730, 10, 200, 23))
         self.searchLab.setObjectName("search_label")
         self.searchLab.setPlaceholderText('请输入需要查询的数据')
         self.lastSearchLocation = 0
         self.lastSearchText = ''
 
         self.search_btn = QtWidgets.QPushButton(self.centralwidget)
-        self.search_btn.setGeometry(QtCore.QRect(1240, 10, 81, 23))
+        self.search_btn.setGeometry(QtCore.QRect(940, 10, 81, 23))
         self.search_btn.setObjectName("search_btn")
 
         self.outside_table = QtWidgets.QLabel(self.centralwidget)
-        self.outside_table.setGeometry(QtCore.QRect(1340, 30, 181, 31))
+        self.outside_table.setGeometry(QtCore.QRect(1040, 30, 181, 31))
         font = QtGui.QFont()
         font.setFamily("Courier New")
         font.setPointSize(10)
@@ -61,7 +61,7 @@ class Ui_MainWindow(object):
         self.outside_table.setText("选择数据表格...")
         self.outside_table.setObjectName("outside_table")
         self.rows = QtWidgets.QLabel(self.centralwidget)
-        self.rows.setGeometry(QtCore.QRect(1340, 30, 71, 31))
+        self.rows.setGeometry(QtCore.QRect(1040, 30, 71, 31))
         font = QtGui.QFont()
         font.setFamily("Courier New")
         font.setPointSize(8)
@@ -72,7 +72,7 @@ class Ui_MainWindow(object):
         self.rows.setText("")
         self.rows.setObjectName("rows")
         self.columns = QtWidgets.QLabel(self.centralwidget)
-        self.columns.setGeometry(QtCore.QRect(1410, 30, 91, 31))
+        self.columns.setGeometry(QtCore.QRect(1110, 30, 91, 31))
         font = QtGui.QFont()
         font.setFamily("Courier New")
         font.setPointSize(8)
@@ -83,7 +83,7 @@ class Ui_MainWindow(object):
         self.columns.setText("")
         self.columns.setObjectName("columns")
         self.inside_table = QtWidgets.QLabel(self.centralwidget)
-        self.inside_table.setGeometry(QtCore.QRect(1340, 11, 181, 20))
+        self.inside_table.setGeometry(QtCore.QRect(1040, 11, 181, 20))
         font = QtGui.QFont()
         font.setFamily("Courier New")
         font.setPointSize(10)
@@ -93,11 +93,11 @@ class Ui_MainWindow(object):
         self.inside_table.setText("")
         self.inside_table.setObjectName("inside_table")
         self.del_row_btn = QtWidgets.QPushButton(self.centralwidget)
-        self.del_row_btn.setGeometry(QtCore.QRect(1350, 290, 111, 23))
+        self.del_row_btn.setGeometry(QtCore.QRect(1050, 290, 111, 23))
         self.del_row_btn.setObjectName("del_row_btn")
 
         self.add_row_btn = QtWidgets.QPushButton(self.centralwidget)
-        self.add_row_btn.setGeometry(QtCore.QRect(1350, 330, 111, 23))
+        self.add_row_btn.setGeometry(QtCore.QRect(1050, 330, 111, 23))
         self.add_row_btn.setObjectName("add_row_btn")
         font = QtGui.QFont()
         font.setFamily("Courier New")
@@ -115,10 +115,10 @@ class Ui_MainWindow(object):
         font.setItalic(True)
         font.setWeight(50)
         self.show_table_btn = QtWidgets.QPushButton(self.centralwidget)
-        self.show_table_btn.setGeometry(QtCore.QRect(1510, 60, 101, 21))
+        self.show_table_btn.setGeometry(QtCore.QRect(1210, 60, 101, 21))
         self.show_table_btn.setObjectName("show_table_btn")
         self.exit_table_btn = QtWidgets.QPushButton(self.centralwidget)
-        self.exit_table_btn.setGeometry(QtCore.QRect(1510, 90, 101, 21))
+        self.exit_table_btn.setGeometry(QtCore.QRect(1210, 90, 101, 21))
         self.exit_table_btn.setObjectName("exit_table_btn")
         #self.exit_btn = QtWidgets.QPushButton(self.centralwidget)
         #self.exit_btn.setGeometry(QtCore.QRect(710, 410, 101, 23))
@@ -548,6 +548,8 @@ class Ui_MainWindow(object):
                 item.setBackground(QtGui.QColor(0, 0, 0, 0))
                 if item is not None and self.searchLab.text() in item.text():
                     item.setBackground(QtGui.QColor(255, 100, 0, 255))
+                else:
+                    self.table.hideRow(row)
         
         if research_flag:
             for row in range(self.table.rowCount()):
